@@ -42,6 +42,10 @@ define method encode-json (stream :: <stream>, object :: singleton(#t))
   write(stream, "true");
 end;
 
+define method encode-json (stream :: <stream>, object :: singleton($null))
+  write(stream, "null");
+end;
+
 define method encode-json (stream :: <stream>, object :: <collection>)
   write(stream, "[");
   for (o in object,

@@ -364,8 +364,7 @@ end function parse-unicode-escape;
 
 /// Synopsis: '$null' is what "null" parses to.
 ///
-define class <null> (<object>) end;  // TODO(cgay): make singleton
-define constant $null :: <null> = make(<null>);
+define constant $null :: <object> = #"json-null";
 
 define class <json-parser> (<object>)
   // Source is for error reporting only.  It could be a file name, a stream, etc.
