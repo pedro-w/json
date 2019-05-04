@@ -71,3 +71,12 @@ define method encode-json (stream :: <stream>, object :: <table>)
   end for;
   write(stream, "}");
 end;
+
+define method encode-json-to-string(object :: <object>)
+  let stream :: <string-stream> = make(<string-stream>,
+				       direction: #"output");
+  encode-json(stream, object);
+  let string = stream-contents(stream);
+  close(stream);
+  string
+end method encode-json-to-string;

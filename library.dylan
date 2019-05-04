@@ -10,6 +10,7 @@ end;
 define module json
   create
     encode-json,
+    encode-json-to-string,
     parse-json,
     <json-error>,
     $null;
