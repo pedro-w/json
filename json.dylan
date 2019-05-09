@@ -58,7 +58,7 @@ define method encode-json (stream :: <stream>, object :: <collection>)
   write(stream, "]");
 end;
 
-define method encode-json (stream :: <stream>, object :: <table>)
+define method encode-json (stream :: <stream>, object :: <explicit-key-collection>)
   write(stream, "{");
   for (value keyed-by key in object,
        i from 0)
