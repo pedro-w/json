@@ -75,8 +75,10 @@ end;
 define method encode-json-to-string(object :: <object>)
   let stream :: <string-stream> = make(<string-stream>,
 				       direction: #"output");
-  encode-json(stream, object);
-  let string = stream-contents(stream);
-  close(stream);
-  string
+  block ()
+    encode-json(stream, object);
+    stream-contents(stream)
+  cleanup
+    close(stream);
+  end block;
 end method encode-json-to-string;
